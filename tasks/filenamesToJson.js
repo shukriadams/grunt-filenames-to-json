@@ -10,28 +10,57 @@
 
 module.exports = function(grunt) {
  
-	var globsync = require('glob-whatev'),
+	var pluginName = 'grunt-filenames-to-json',
+		globsync = require('glob-whatev'),
 		path = require('path'),
 		fs = require('fs'),
 		jf = require('jsonfile');
 
 	grunt.registerTask('filenamesToJson', '', function() {
+	    
+	    // verify settings
+	    if (!grunt.config('filenamesToJson')){
+	    	grunt.log.error(pluginName + ' could not find expected config item "filenamesToJson".');
+	    }
+    	if (!grunt.config('filenamesToJson').files){
+			grunt.log.error(pluginName + ' config does not contained expected property "files".');
+    	}
+    	if (!grunt.config('filenamesToJson').destination){
+			grunt.log.error(pluginName + ' config does not contained expected property "destination".');
+    	}
+
 	    var output = [],
-	    	options = this.options({
+	    	config = this.options({
 	      		files : grunt.config('filenamesToJson').files,
-	      		target :  grunt.config('filenamesToJson').target
+	      		destination :  grunt.config('filenamesToJson').destination,
+	      		options : grunt.config('filenamesToJson').options || { }
 	    	});
 
-		globsync.glob(options.files).forEach(function(filepath) {
-	  		output.push(path.basename(filepath, path.extname(filepath)));
+		if (config.options.fullPath === undefined)
+			config.options.fullPath = false;
+		if (config.options.extensions === undefined)
+			config.options.extensions = false;
+
+		// search for files
+		globsync.glob(config.files).forEach(function(filepath) {
+			var file = filepath;
+			if (!config.options.fullPath)
+				file = path.basename(file);
+			
+			if (!config.options.extensions)
+				file = file.substring(0, file.length - path.extname(file).length);
+
+	  		output.push(file);
 		});
 		
-		var dir = path.dirname(options.target);	
+		// create destination write folder if it doesn't exist
+		var dir = path.dirname(config.destination);	
 		if (!fs.existsSync(dir)){
     		fs.mkdirSync(dir);
 		}
 
-		jf.writeFile(options.target, output, function(err) {
+		// write json
+		jf.writeFile(config.destination, output, function(err) {
 			if (err){
 		  		grunt.fail.warn(err);
 			}
