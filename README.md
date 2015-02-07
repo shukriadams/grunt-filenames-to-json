@@ -1,14 +1,17 @@
-** grunt-filenames-to-json
+grunt-filenames-to-json
+=======================
 
 Grunt plugin that generates a json file contains list of files in a given path. Json is an array of file name strings.
 
-* Getting started
+Getting started
+---------------
 - install in npm
 	npm install grunt-filenames-to-json
 - add to Gruntfile
     grunt.loadNpmTasks('grunt-filenames-to-json');
 
-* Configure
+Configure
+---------
 
 	grunt.initConfig({
 
