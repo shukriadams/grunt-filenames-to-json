@@ -1,0 +1,45 @@
+{
+  "name": "grunt-filenames-to-json",
+  "description": "Writes filenames to a json file",
+  "version": "0.1.0",
+  "homepage": "https://github.com/shukriadams/grunt-filenames-to-json",
+  "author": {
+    "name": "Shukri Adams",
+    "email": "shukri.adams@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shukriadams/grunt-filenames-to-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shukriadams/grunt-filenames-to-json/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shukriadams/grunt-filenames-to-json/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "tasks/filenamesToJson.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.5",
+    "glob-whatev": "~0.1.8",
+    "jsonfile " : "~2.0.0",
+    "process" : "~0.10.0"
+  },
+  "dependencies": {
+    "glob-whatev": "~0.1.8",
+    "jsonfile " : "~2.0.0",
+    "process" : "~0.10.0"
+  },
+  "keywords": []
+}
