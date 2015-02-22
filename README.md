@@ -24,7 +24,7 @@ Configure
         		fullPath : false,
         		// true if file extension should be included, default is false 
         		extensions : false
-        	}
+        	},
         	// any valid glob
             files : '**/js',
 
