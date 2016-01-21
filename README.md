@@ -34,3 +34,8 @@ Configure
 
     });
 
+Test 
+----
+- Clone repo
+- Run "npm install"
+- Run "grunt test" to generate a JSON file of all js files in the repo you've cloned. The file output is "javascriptFileNames.json" in the repo root.

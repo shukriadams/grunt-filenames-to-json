@@ -1,6 +1,6 @@
 'use strict';
 
-var filenames_to_json = require('../lib/filenames-to-json.js');
+var filenames_to_json = require('../tasks/filenamesToJson.js');
 
 /*
   ======== A Handy Little Nodeunit Reference ========

@@ -35,14 +35,30 @@ module.exports = function(grunt) {
         tasks: ['jshint:test', 'nodeunit']
       },
     },
+
+    // test call, generates list of all js file in this project folder
+    filenamesToJson : {
+      options : {
+        // true if full path should be included, default is false
+        fullPath : false,
+        // true if file extension should be included, default is false 
+        extensions : true
+      },
+      // any valid glob
+      files : '**/*.js',
+
+        // path to write json to
+      destination : 'javascriptFileNames.json'
+    }    
   });
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
+  grunt.loadTasks('tasks');
+  
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit']);
-
+  grunt.registerTask('test', ['filenamesToJson']);
 };
