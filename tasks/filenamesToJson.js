@@ -59,12 +59,16 @@ module.exports = function(grunt) {
     		fs.mkdirSync(dir);
 		}
 
-		// write json
-		jf.writeFile(config.destination, output, function(err) {
-			if (err){
-		  		grunt.fail.warn(err);
-			}
-		});
+		if (config.options.synchronous) {
+            		jf.writeFileSync(config.destination, output);
+        	} else {
+			// write json
+			jf.writeFile(config.destination, output, function(err) {
+				if (err){
+		  			grunt.fail.warn(err);
+				}
+			});
+        	}
 		
 	});
 };
