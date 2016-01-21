@@ -60,15 +60,19 @@ module.exports = function(grunt) {
 		}
 
 		if (config.options.synchronous) {
-            		jf.writeFileSync(config.destination, output);
-        	} else {
+    		jf.writeFileSync(config.destination, output);
+    	} 
+    	else 
+    	{
+    		var done = this.async()
 			// write json
 			jf.writeFile(config.destination, output, function(err) {
 				if (err){
 		  			grunt.fail.warn(err);
 				}
+				done();
 			});
-        	}
+    	}
 		
 	});
 };
