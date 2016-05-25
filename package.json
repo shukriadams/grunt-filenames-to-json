@@ -33,12 +33,12 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.5",
     "glob-whatev": "~0.1.8",
-    "jsonfile " : "~2.0.0",
+    "jsonfile" : "~2.0.0",
     "process" : "~0.10.0"
   },
   "dependencies": {
     "glob-whatev": "~0.1.8",
-    "jsonfile " : "~2.0.0",
+    "jsonfile" : "~2.0.0",
     "process" : "~0.10.0"
   },
   "keywords": []
